@@ -25,7 +25,10 @@ public class PlayerControl : MonoBehaviour
     // Skor pemain
     private int score;
 
+    //variabel cek player atau enemy
     public bool isPlayer;
+
+    //rigidbody 2d dari ball
     public Rigidbody2D ball;
 
     // Start is called before the first frame update
@@ -37,6 +40,7 @@ public class PlayerControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //jika player
         if (isPlayer)
         {
             // Dapatkan kecepatan raket sekarang.
@@ -81,24 +85,43 @@ public class PlayerControl : MonoBehaviour
             // Masukkan kembali posisinya ke transform.
             transform.position = position;
         }
+
+        //jika bukan player
         else
         {
+            //jika posisi bola diatas racket enemy
             if (this.ball.position.y > this.transform.position.y)
             {
-                rigidBody2D.AddForce(Vector2.up * 0.005f);
+                //cek jika posisi bola sama dengan posisi racket enemy
                 if(this.ball.position.y == this.transform.position.y)
                 {
+                    //maka posisi racket akan sama dengan posisi bola
                     gameObject.transform.position = ball.transform.position;
-                    return;
+                }
+
+                //jika tidak
+                else
+                {
+                    //naikkan posisi raket
+                    rigidBody2D.AddForce(Vector2.up * 0.005f);
                 }
             }
+
+            //jika posisi bola dibawah racket enemy
             else if (this.ball.position.y < this.transform.position.y)
             {
-                rigidBody2D.AddForce(Vector2.down * 0.005f);
+                //cek jika posisi bola sama dengan posisi racket enemy
                 if (this.ball.position.y == this.transform.position.y)
                 {
+                    //maka posisi racket akan sama dengan posisi bola
                     gameObject.transform.position = ball.transform.position;
-                    return;
+                }
+
+                //jika tidak
+                else
+                {
+                    //turunkan posisi raket
+                    rigidBody2D.AddForce(Vector2.down * 0.005f);
                 }
             }
         }
