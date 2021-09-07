@@ -191,7 +191,6 @@ GameObject:
   - component: {fileID: 240630822}
   - component: {fileID: 240630821}
   - component: {fileID: 240630820}
-  - component: {fileID: 240630819}
   m_Layer: 0
   m_Name: BallAtCollision
   m_TagString: Untagged
@@ -199,21 +198,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &240630819
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 240630818}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0e40b5d054b0674a844bd74524096ce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Dot: {fileID: 0}
-  Size: 0.055
-  Delta: 0.1
 --- !u!114 &240630820
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -664,7 +648,7 @@ GameObject:
   - component: {fileID: 1410293117}
   m_Layer: 0
   m_Name: Ball
-  m_TagString: Untagged
+  m_TagString: Ball
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -825,7 +809,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3dc9d7449502f664ba7bbf812e4697d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trajectory: {fileID: 0}
+  trajectory: {fileID: 1827274619}
   player1: {fileID: 1615350573}
   player2: {fileID: 1234878989}
   ball: {fileID: 1410293117}
@@ -838,7 +822,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1628722667}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.7718172, y: -1.2841486, z: -4.5883813}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -854,6 +838,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1827274620}
   - component: {fileID: 1827274619}
+  - component: {fileID: 1827274621}
   m_Layer: 0
   m_Name: Trajectory
   m_TagString: Untagged
@@ -874,7 +859,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ball: {fileID: 1410293117}
-  ballAtCollision: {fileID: 0}
+  ballAtCollision: {fileID: 240630818}
 --- !u!4 &1827274620
 Transform:
   m_ObjectHideFlags: 0
@@ -883,12 +868,27 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1827274618}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.7718172, y: -1.2841486, z: -4.5883813}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1827274621
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1827274618}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0e40b5d054b0674a844bd74524096ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Dot: {fileID: 21300000, guid: b5f49f968c74105488df1f59482d1a36, type: 3}
+  Size: 0.055
+  Delta: 0.1
 --- !u!1001 &1875122792
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -896,6 +896,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2300978163976530613, guid: 73a22e794e2c09e4094b6be4308a88c8, type: 3}
+      propertyPath: upButton
+      value: 112
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300978163976530613, guid: 73a22e794e2c09e4094b6be4308a88c8, type: 3}
+      propertyPath: downButton
+      value: 108
+      objectReference: {fileID: 0}
     - target: {fileID: 2491270051027725319, guid: 73a22e794e2c09e4094b6be4308a88c8, type: 3}
       propertyPath: m_RootOrder
       value: 2
