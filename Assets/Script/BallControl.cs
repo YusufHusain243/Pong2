@@ -28,8 +28,7 @@ public class BallControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float ballSpeed = rigidBody2D.velocity.magnitude;
-        Debug.Log(ballSpeed);
+        
     }
 
     void ResetBall()
@@ -53,34 +52,14 @@ public class BallControl : MonoBehaviour
         // Jika tidak, bola bergerak ke kanan.
         if (randomDirection < 1.0f)
         {
-            float ballSpeed = rigidBody2D.velocity.magnitude;
-            if(ballSpeed > 10.0f && ballSpeed < 10.0f)
-            {
-                rigidBody2D.AddForce(new Vector2(10.0f, yInitialForce));
-            }
-            else
-            {
-                // Gunakan gaya untuk menggerakkan bola ini.
-                rigidBody2D.AddForce(new Vector2(-xInitialForce, yRandomInitialForce));
-            }
-            
+            // Gunakan gaya untuk menggerakkan bola ini.
+            rigidBody2D.AddForce(new Vector2(-xInitialForce, yRandomInitialForce));
         }
         else
         {
-            float ballSpeed = rigidBody2D.velocity.magnitude;
-            if (ballSpeed > 10.0f && ballSpeed < 10.0f)
-            {
-                rigidBody2D.AddForce(new Vector2(10.0f, yInitialForce));
-            }
-            else
-            {
-                // Gunakan gaya untuk menggerakkan bola ini.
-                rigidBody2D.AddForce(new Vector2(xInitialForce, yRandomInitialForce));
-            }
-            
+            // Gunakan gaya untuk menggerakkan bola ini.
+            rigidBody2D.AddForce(new Vector2(xInitialForce, yRandomInitialForce));
         }
-
-        Debug.Log(xInitialForce);
     }
 
     void RestartGame()

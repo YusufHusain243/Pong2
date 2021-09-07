@@ -25,6 +25,9 @@ public class PlayerControl : MonoBehaviour
     // Skor pemain
     private int score;
 
+    public bool isPlayer;
+    public Rigidbody2D ball;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,47 +37,71 @@ public class PlayerControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Dapatkan kecepatan raket sekarang.
-        Vector2 velocity = rigidBody2D.velocity;
-
-        // Jika pemain menekan tombol ke atas, beri kecepatan positif ke komponen y (ke atas).
-        if (Input.GetKey(upButton))
+        if (isPlayer)
         {
-            velocity.y = speed;
-        }
+            // Dapatkan kecepatan raket sekarang.
+            Vector2 velocity = rigidBody2D.velocity;
 
-        // Jika pemain menekan tombol ke bawah, beri kecepatan negatif ke komponen y (ke bawah).
-        else if (Input.GetKey(downButton))
-        {
-            velocity.y = -speed;
-        }
+            // Jika pemain menekan tombol ke atas, beri kecepatan positif ke komponen y (ke atas).
+            if (Input.GetKey(upButton))
+            {
+                velocity.y = speed;
+            }
 
-        // Jika pemain tidak menekan tombol apa-apa, kecepatannya nol.
+            // Jika pemain menekan tombol ke bawah, beri kecepatan negatif ke komponen y (ke bawah).
+            else if (Input.GetKey(downButton))
+            {
+                velocity.y = -speed;
+            }
+
+            // Jika pemain tidak menekan tombol apa-apa, kecepatannya nol.
+            else
+            {
+                velocity.y = 0.0f;
+            }
+
+            // Masukkan kembali kecepatannya ke rigidBody2D.
+            rigidBody2D.velocity = velocity;
+
+            // Dapatkan posisi raket sekarang.
+            Vector3 position = transform.position;
+
+            // Jika posisi raket melewati batas atas (yBoundary), kembalikan ke batas atas tersebut.
+            if (position.y > yBoundary)
+            {
+                position.y = yBoundary;
+            }
+
+            // Jika posisi raket melewati batas bawah (-yBoundary), kembalikan ke batas atas tersebut.
+            else if (position.y < -yBoundary)
+            {
+                position.y = -yBoundary;
+            }
+
+            // Masukkan kembali posisinya ke transform.
+            transform.position = position;
+        }
         else
         {
-            velocity.y = 0.0f;
+            if (this.ball.position.y > this.transform.position.y)
+            {
+                rigidBody2D.AddForce(Vector2.up * 0.005f);
+                if(this.ball.position.y == this.transform.position.y)
+                {
+                    gameObject.transform.position = ball.transform.position;
+                    return;
+                }
+            }
+            else if (this.ball.position.y < this.transform.position.y)
+            {
+                rigidBody2D.AddForce(Vector2.down * 0.005f);
+                if (this.ball.position.y == this.transform.position.y)
+                {
+                    gameObject.transform.position = ball.transform.position;
+                    return;
+                }
+            }
         }
-
-        // Masukkan kembali kecepatannya ke rigidBody2D.
-        rigidBody2D.velocity = velocity;
-
-        // Dapatkan posisi raket sekarang.
-        Vector3 position = transform.position;
-
-        // Jika posisi raket melewati batas atas (yBoundary), kembalikan ke batas atas tersebut.
-        if (position.y > yBoundary)
-        {
-            position.y = yBoundary;
-        }
-
-        // Jika posisi raket melewati batas bawah (-yBoundary), kembalikan ke batas atas tersebut.
-        else if (position.y < -yBoundary)
-        {
-            position.y = -yBoundary;
-        }
-
-        // Masukkan kembali posisinya ke transform.
-        transform.position = position;
     }
 
     // Menaikkan skor sebanyak 1 poin
