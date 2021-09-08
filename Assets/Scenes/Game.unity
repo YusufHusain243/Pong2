@@ -206,6 +206,7 @@ GameObject:
   - component: {fileID: 240630822}
   - component: {fileID: 240630821}
   - component: {fileID: 240630820}
+  - component: {fileID: 240630819}
   m_Layer: 0
   m_Name: BallAtCollision
   m_TagString: Untagged
@@ -213,6 +214,27 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!50 &240630819
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 240630818}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 0.0001
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!114 &240630820
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -664,6 +686,10 @@ PrefabInstance:
       propertyPath: downButton
       value: 108
       objectReference: {fileID: 0}
+    - target: {fileID: 2300978163976530613, guid: 73a22e794e2c09e4094b6be4308a88c8, type: 3}
+      propertyPath: ballCollision
+      value: 
+      objectReference: {fileID: 240630819}
     - target: {fileID: 2491270051027725319, guid: 73a22e794e2c09e4094b6be4308a88c8, type: 3}
       propertyPath: m_RootOrder
       value: 3

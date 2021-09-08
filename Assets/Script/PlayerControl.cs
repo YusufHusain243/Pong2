@@ -95,15 +95,15 @@ public class PlayerControl : MonoBehaviour
                 //cek jika posisi bola sama dengan posisi racket enemy
                 if(this.ball.position.y == this.transform.position.y)
                 {
-                    //maka posisi racket akan sama dengan posisi bola
-                    gameObject.transform.position = ball.transform.position;
+                    //maka jangan gerakkan racket
+                    rigidBody2D.AddForce(Vector2.up * 0.0f);
                 }
 
                 //jika tidak
                 else
                 {
                     //naikkan posisi raket
-                    rigidBody2D.AddForce(Vector2.up * 0.005f);
+                    rigidBody2D.AddForce(Vector2.up * 0.003f);
                 }
             }
 
@@ -113,15 +113,15 @@ public class PlayerControl : MonoBehaviour
                 //cek jika posisi bola sama dengan posisi racket enemy
                 if (this.ball.position.y == this.transform.position.y)
                 {
-                    //maka posisi racket akan sama dengan posisi bola
-                    gameObject.transform.position = ball.transform.position;
+                    //maka jangan gerakkan racket
+                    rigidBody2D.AddForce(Vector2.down * 0.0f);
                 }
 
                 //jika tidak
                 else
                 {
                     //turunkan posisi raket
-                    rigidBody2D.AddForce(Vector2.down * 0.005f);
+                    rigidBody2D.AddForce(Vector2.down * 0.003f);
                 }
             }
         }
